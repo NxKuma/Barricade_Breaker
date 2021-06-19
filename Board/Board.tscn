@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Board/Board-Sheet.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 4.14947
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 71.4069, 3.20071 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2.37924, 31.9603 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 89.3555, 44.0883 )
+
+[node name="Board" type="Area2D"]
+scale = Vector2( 2, 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 11
+
+[node name="ULB" type="StaticBody2D" parent="."]
+
+[node name="UpperLeftBumper" type="CollisionShape2D" parent="ULB"]
+position = Vector2( -79.1716, -36.0192 )
+shape = SubResource( 1 )
+
+[node name="LLB" type="StaticBody2D" parent="."]
+
+[node name="LowerLeftBumper" type="CollisionShape2D" parent="LLB"]
+position = Vector2( -78.9843, 35.3376 )
+shape = SubResource( 1 )
+
+[node name="URB" type="StaticBody2D" parent="."]
+
+[node name="UpperRightBumper" type="CollisionShape2D" parent="URB"]
+position = Vector2( 79.0435, -35.6657 )
+shape = SubResource( 1 )
+
+[node name="LRB" type="StaticBody2D" parent="."]
+
+[node name="LowerRightBumper" type="CollisionShape2D" parent="LRB"]
+position = Vector2( 79.0541, 35.868 )
+shape = SubResource( 1 )
+
+[node name="UB" type="StaticBody2D" parent="."]
+
+[node name="UpperBumper" type="CollisionShape2D" parent="UB"]
+position = Vector2( 0.0315323, -45.0783 )
+shape = SubResource( 2 )
+
+[node name="LB" type="StaticBody2D" parent="."]
+
+[node name="LowerBumper" type="CollisionShape2D" parent="LB"]
+position = Vector2( 0.856689, 44.6818 )
+shape = SubResource( 2 )
+
+[node name="SB" type="StaticBody2D" parent="."]
+
+[node name="Sample Bumper" type="CollisionShape2D" parent="SB"]
+position = Vector2( -71.4166, -0.841848 )
+shape = SubResource( 3 )
+
+[node name="SB2" type="StaticBody2D" parent="."]
+
+[node name="Sample Bumper" type="CollisionShape2D" parent="SB2"]
+position = Vector2( 75.2489, -1.84298 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 4 )
