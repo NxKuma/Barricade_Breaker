@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Board/Board-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Board/Center-Sheet.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 4.14947
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 71.4069, 3.20071 )
+extents = Vector2( 71.4069, 2.18221 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2.37924, 31.9603 )
@@ -14,12 +15,73 @@ extents = Vector2( 2.37924, 31.9603 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 89.3555, 44.0883 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "Begin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Board:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Wriggle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Board:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Begin"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Wriggle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=7]
+states/Begin/node = SubResource( 9 )
+states/Begin/position = Vector2( 348, 49 )
+states/Wriggle/node = SubResource( 10 )
+states/Wriggle/position = Vector2( 565, 80 )
+transitions = [ "Begin", "Wriggle", SubResource( 11 ) ]
+start_node = "Begin"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+
 [node name="Board" type="Area2D"]
 scale = Vector2( 2, 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Board" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 11
+frame = 9
+
+[node name="Center" type="Sprite" parent="."]
+position = Vector2( 0.749153, -0.0936433 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+hframes = 12
+frame = 11
 
 [node name="ULB" type="StaticBody2D" parent="."]
 
@@ -48,19 +110,19 @@ shape = SubResource( 1 )
 [node name="UB" type="StaticBody2D" parent="."]
 
 [node name="UpperBumper" type="CollisionShape2D" parent="UB"]
-position = Vector2( 0.0315323, -45.0783 )
+position = Vector2( 0.0315323, -45.7465 )
 shape = SubResource( 2 )
 
 [node name="LB" type="StaticBody2D" parent="."]
 
 [node name="LowerBumper" type="CollisionShape2D" parent="LB"]
-position = Vector2( 0.856689, 44.6818 )
+position = Vector2( -0.0342107, 43.7909 )
 shape = SubResource( 2 )
 
 [node name="SB" type="StaticBody2D" parent="."]
 
 [node name="Sample Bumper" type="CollisionShape2D" parent="SB"]
-position = Vector2( -71.4166, -0.841848 )
+position = Vector2( -73.8666, -0.841848 )
 shape = SubResource( 3 )
 
 [node name="SB2" type="StaticBody2D" parent="."]
@@ -72,3 +134,13 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Begin = SubResource( 5 )
+anims/Wriggle = SubResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 8 )
