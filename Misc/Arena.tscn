@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Misc/Ball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Board/Board.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Misc/Ball.png" type="Texture" id=4]
+[ext_resource path="res://Misc/Restart.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.35672
 
 [node name="Arena" type="Node2D"]
 
@@ -12,8 +17,20 @@
 position = Vector2( 100.984, -9.21552 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0.49826, 20.6338 )
 current = true
-zoom = Vector2( 0.35, 0.35 )
+zoom = Vector2( 0.35, 0.37 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 117.599, -10.2453 )
+
+[node name="Restart" type="Area2D" parent="."]
+position = Vector2( -165, 112.5 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Restart"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Restart"]
+texture = ExtResource( 4 )
+[connection signal="mouse_entered" from="Restart" to="Restart" method="_on_Area2D_mouse_entered"]

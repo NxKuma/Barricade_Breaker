@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
 export var speed_up = 1.1
-export var max_speed = 15
+export var intensity = 0.8
+export var duration = 0.15
+var max_speed = 15
 
 
 var velocity = Vector2.ZERO
@@ -18,7 +20,12 @@ func _ready():
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity*delta)
 	
+	
+	
 	if collision_info:
+		if collision_info.collider.name == "Slasher":
+			CamShake.shake(1.5, duration)
+		
 		velocity = velocity.bounce(collision_info.normal)
 		if speed < max_speed:
 			if velocity == Vector2.ZERO:
@@ -28,5 +35,4 @@ func _physics_process(delta):
 			velocity.y *= speed_up
 			speed += 1
 			sMeter.frame += 1
-			print(speed)
 		
