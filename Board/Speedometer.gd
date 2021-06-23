@@ -1,12 +1,21 @@
-extends Sprite
+extends Area2D
 
-onready var s
+var intensity = 0.7
+var duration = 0.14
+
+onready var rBar = $Barricade
+onready var lBar = $Barricade_2
+onready var aTree = $AnimationTree
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	rBar.frame = 0
+	lBar.frame = 0
+	aTree.active = true
 
-
+func _shake():
+	CamShake.shake(intensity, duration)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
