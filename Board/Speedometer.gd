@@ -16,6 +16,4 @@ func _ready():
 func _shake():
 	CamShake.shake(intensity, duration)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+

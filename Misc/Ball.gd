@@ -14,9 +14,9 @@ var animName = ["1ST", "2ND", "3RD"]
 var rightBar = 0
 var leftBar = 0
 
-onready var sMeter = get_tree().get_current_scene().get_node("Board").get_child(1)
-onready var bar1 = get_tree().get_current_scene().get_node("Board").get_child(2).get_child(1)
-onready var bar2 = get_tree().get_current_scene().get_node("Board").get_child(3).get_child(1)
+onready var sMeter = get_tree().get_current_scene().get_node("Board/Center")
+onready var bar1 = get_tree().get_current_scene().get_node("Board/Barricade/RightBar")
+onready var bar2 = get_tree().get_current_scene().get_node("Board/Barricade_2/LeftBar")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,6 +55,9 @@ func _physics_process(delta):
 			
 		if col_name == "Slasher":
 			CamShake.shake(1.5, duration)
+			Engine.time_scale = 0.1
+			yield(get_tree().create_timer(.04),"timeout")
+			Engine.time_scale = 1
 			if speed < max_speed:
 				if velocity == Vector2.ZERO:
 					velocity.x += 50

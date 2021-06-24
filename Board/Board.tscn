@@ -5,10 +5,10 @@
 [ext_resource path="res://Board/Barricade.png" type="Texture" id=3]
 [ext_resource path="res://Board/Speedometer.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.37924, 31.9603 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=2]
 resource_name = "1ST"
 length = 0.35
 tracks/0/type = "value"
@@ -50,7 +50,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=3]
 resource_name = "2ND"
 length = 0.35
 tracks/0/type = "value"
@@ -92,9 +92,10 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "3RD"
 length = 0.35
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -128,15 +129,16 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -69.3591, -0.0662136 ), Vector2( -58.0282, 0.21472 ) ]
+"values": [ Vector2( -69.3591, -0.0662136 ), Vector2( -54.87, 0.406256 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=5]
 resource_name = "1ST"
 length = 0.35
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -176,7 +178,7 @@ tracks/2/keys = {
 "values": [ Vector2( 76.0546, 0.0496063 ), Vector2( 71.8661, -0.00938416 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=6]
 resource_name = "2ND"
 length = 0.35
 tracks/0/type = "value"
@@ -218,9 +220,10 @@ tracks/2/keys = {
 "values": [ Vector2( 71.8661, -0.00938416 ), Vector2( 68.0316, 0.226585 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=7]
 resource_name = "3RD"
 length = 0.35
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -254,23 +257,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 68.0316, 0.226585 ), Vector2( 53.6376, -0.245352 ) ]
+"values": [ Vector2( 68.0316, 0.226585 ), Vector2( 56.3773, -0.245884 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=8]
 height = 4.14947
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 71.4069, 2.18221 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 89.3555, 44.0883 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "Begin"
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Board:frame")
@@ -285,8 +287,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Wriggle"
+[sub_resource type="Animation" id=12]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -302,27 +303,27 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9, 10 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Begin"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Wriggle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=10]
-states/Begin/node = SubResource( 7 )
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Begin/node = SubResource( 13 )
 states/Begin/position = Vector2( 348, 49 )
-states/Wriggle/node = SubResource( 8 )
+states/Wriggle/node = SubResource( 14 )
 states/Wriggle/position = Vector2( 565, 80 )
-transitions = [ "Begin", "Wriggle", SubResource( 9 ) ]
+transitions = [ "Begin", "Wriggle", SubResource( 15 ) ]
 start_node = "Begin"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 0.440445, 41.9958 )
 
 [node name="Board" type="Area2D"]
@@ -332,7 +333,7 @@ script = ExtResource( 4 )
 [node name="Board" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 11
-frame = 7
+frame = 6
 
 [node name="Center" type="Sprite" parent="."]
 position = Vector2( 0.749153, -0.0936433 )
@@ -353,12 +354,12 @@ position = Vector2( -77.5699, 0 )
 
 [node name="Sample Bumper" type="CollisionShape2D" parent="Barricade/RightBound"]
 position = Vector2( 75.2489, -1.84298 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="RightBar" type="AnimationPlayer" parent="Barricade"]
-anims/1ST = SubResource( 13 )
-anims/2ND = SubResource( 14 )
-anims/3RD = SubResource( 15 )
+anims/1ST = SubResource( 2 )
+anims/2ND = SubResource( 3 )
+anims/3RD = SubResource( 4 )
 
 [node name="Barricade_2" type="Sprite" parent="."]
 position = Vector2( -77.01, 0 )
@@ -371,62 +372,62 @@ position = Vector2( 76.0546, 0.0496063 )
 
 [node name="Sample Bumper" type="CollisionShape2D" parent="Barricade_2/LeftBound"]
 position = Vector2( -73.8666, -0.841848 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="LeftBar" type="AnimationPlayer" parent="Barricade_2"]
-anims/1ST = SubResource( 16 )
-anims/2ND = SubResource( 17 )
-anims/3RD = SubResource( 18 )
+anims/1ST = SubResource( 5 )
+anims/2ND = SubResource( 6 )
+anims/3RD = SubResource( 7 )
 
 [node name="ULB" type="StaticBody2D" parent="."]
 
 [node name="UpperLeftBumper" type="CollisionShape2D" parent="ULB"]
 position = Vector2( -79.1716, -36.0192 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="LLB" type="StaticBody2D" parent="."]
 
 [node name="LowerLeftBumper" type="CollisionShape2D" parent="LLB"]
 position = Vector2( -78.9843, 35.3376 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="URB" type="StaticBody2D" parent="."]
 
 [node name="UpperRightBumper" type="CollisionShape2D" parent="URB"]
 position = Vector2( 79.0435, -35.6657 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="LRB" type="StaticBody2D" parent="."]
 
 [node name="LowerRightBumper" type="CollisionShape2D" parent="LRB"]
 position = Vector2( 79.0541, 35.868 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="UB" type="StaticBody2D" parent="."]
 
 [node name="UpperBumper" type="CollisionShape2D" parent="UB"]
 position = Vector2( 0.0315323, -45.7465 )
-shape = SubResource( 2 )
+shape = SubResource( 9 )
 
 [node name="LB" type="StaticBody2D" parent="."]
 
 [node name="LowerBumper" type="CollisionShape2D" parent="LB"]
 position = Vector2( -0.0342107, 43.7909 )
-shape = SubResource( 2 )
+shape = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 4 )
+shape = SubResource( 10 )
 
 [node name="BoardAnim" type="AnimationPlayer" parent="."]
-anims/Begin = SubResource( 5 )
-anims/Wriggle = SubResource( 6 )
+anims/Begin = SubResource( 11 )
+anims/Wriggle = SubResource( 12 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 10 )
+tree_root = SubResource( 16 )
 anim_player = NodePath("../BoardAnim")
 active = true
-parameters/playback = SubResource( 11 )
+parameters/playback = SubResource( 17 )
 
 [node name="CenterLine" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -434,4 +435,4 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterLine"]
 position = Vector2( 0.472458, -0.787453 )
-shape = SubResource( 12 )
+shape = SubResource( 18 )

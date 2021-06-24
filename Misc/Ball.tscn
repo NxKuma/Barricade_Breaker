@@ -19,6 +19,7 @@ colors = PoolColorArray( 0.439216, 0.419608, 0.176471, 0, 0.988281, 0.937522, 0.
 "Moving",
 ]]
 scale = Vector2( 0.7, 0.7 )
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

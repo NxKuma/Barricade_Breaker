@@ -1,18 +1,15 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Characters/Sample_Anim2-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 3.01852
+radius = 2.4697
 height = 8.136
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 4.02843
 height = 11.5096
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 1.74188, 10 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Attack"
@@ -31,52 +28,28 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17, 18, 19 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Slasher:position")
+tracks/1/path = NodePath("Slasher/CollisionPolygon2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.25 ),
+"times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 25.8651, -1.52944 ), Vector2( 13.9461, -2.05917 ), Vector2( -0.621502, -3.18485 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Slasher/Slash:position")
+tracks/2/path = NodePath("Slasher/CollisionPolygon2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.05, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -8.375, 0.875 ), Vector2( -13.625, 0.375 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Slasher/Slash:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.05, 0.25 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Slasher/Slash:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.05, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1.2 ), Vector2( 1.5, 1.7 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -220,23 +193,25 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 24
-frame = 2
+frame = 19
 
 [node name="Shield" type="CollisionShape2D" parent="."]
-position = Vector2( -2.81291, 0.996306 )
+position = Vector2( -3.20268, 2.05425 )
 shape = SubResource( 1 )
 one_way_collision_margin = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 5.25827, 1.68661 )
+position = Vector2( 4.81282, 0.907074 )
 shape = SubResource( 2 )
 
 [node name="Slasher" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2147483652
 
-[node name="Slash" type="CollisionShape2D" parent="Slasher"]
-position = Vector2( -13.625, 0.375 )
-scale = Vector2( 1.5, 1.7 )
-shape = SubResource( 3 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Slasher"]
+position = Vector2( -0.621502, -3.18485 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -2.87369, -7.50421, -4.39667, -7.23935, -6.05433, -6.43854, -7.10545, -5.22975, -7.89379, -2.44428, -8.09104, -0.74304, -8.10402, 1.91787, -7.95205, 3.75274, -7.5259, 5.54423, -6.67968, 7.08199, -4.8981, 8.43481, -2.53308, 9.27571, -4.79397, 1.43501 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
