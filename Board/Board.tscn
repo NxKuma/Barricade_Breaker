@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Board/Board-Sheet_2.png" type="Texture" id=1]
 [ext_resource path="res://Board/Center-Sheet_2.png" type="Texture" id=2]
@@ -326,6 +326,38 @@ start_node = "Begin"
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 0.440445, 41.9958 )
 
+[sub_resource type="Animation" id=19]
+resource_name = "Toss_Heads"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Center:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.8, 1, 1.2, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "Toss_Tails"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Center:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.45, 0.5, 0.55, 0.6, 0.7, 0.8, 1, 1.2, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 ]
+}
+
 [node name="Board" type="Area2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 4 )
@@ -333,14 +365,14 @@ script = ExtResource( 4 )
 [node name="Board" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 11
-frame = 6
+frame = 9
 
 [node name="Center" type="Sprite" parent="."]
 position = Vector2( 0.749153, -0.0936433 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-hframes = 18
-frame = 11
+hframes = 19
+frame = 2
 
 [node name="Barricade" type="Sprite" parent="."]
 position = Vector2( 76.98, 0 )
@@ -436,3 +468,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterLine"]
 position = Vector2( 0.472458, -0.787453 )
 shape = SubResource( 18 )
+
+[node name="CenterAnim" type="AnimationPlayer" parent="."]
+anims/Toss_Heads = SubResource( 19 )
+anims/Toss_Tails = SubResource( 20 )
+[connection signal="animation_finished" from="CenterAnim" to="." method="_on_CenterAnim_animation_finished"]

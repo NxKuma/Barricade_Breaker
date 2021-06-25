@@ -17,15 +17,28 @@ var leftBar = 0
 onready var sMeter = get_tree().get_current_scene().get_node("Board/Center")
 onready var bar1 = get_tree().get_current_scene().get_node("Board/Barricade/RightBar")
 onready var bar2 = get_tree().get_current_scene().get_node("Board/Barricade_2/LeftBar")
+onready var startR = get_tree().get_current_scene().get_node("StartingPoint_R")
+onready var startL = get_tree().get_current_scene().get_node("StartingPoint_L")
+onready var startPoint = get_node("Starting Point")
+onready var scale_tween = get_node("Scale_Tween")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sMeter.frame = 3
+	position = startR.position
+	visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity*delta)
+	
+	if velocity == Vector2.ZERO:
+		startPoint.visible = true
+	else: 
+		startPoint.visible = false
+	
 	
 	if collision_info:
 		var col_name = collision_info.collider.name

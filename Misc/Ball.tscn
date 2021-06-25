@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Misc/Ball.png" type="Texture" id=1]
 [ext_resource path="res://Misc/Ball.gd" type="Script" id=2]
 [ext_resource path="res://Misc/Trail.gd" type="Script" id=3]
+[ext_resource path="res://Misc/Starting Point.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.65195
@@ -37,3 +38,8 @@ width_curve = SubResource( 2 )
 default_color = Color( 1, 0, 0.0823529, 1 )
 gradient = SubResource( 3 )
 script = ExtResource( 3 )
+
+[node name="Starting Point" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 6 )
+
+[node name="Scale_Tween" type="Tween" parent="."]

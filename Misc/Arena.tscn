@@ -27,7 +27,7 @@ font_data = ExtResource( 6 )
 [node name="Board" parent="." instance=ExtResource( 2 )]
 
 [node name="Ball" parent="." instance=ExtResource( 1 )]
-position = Vector2( 100.984, -9.21552 )
+position = Vector2( 0.881653, -45.4084 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0.498, 45 )
@@ -35,7 +35,7 @@ current = true
 zoom = Vector2( 0.35, 0.45 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 117.599, -10.2453 )
+position = Vector2( 117.599, 0 )
 
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2( -155.797, 113.916 )
@@ -317,3 +317,9 @@ text = "Long
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StartingPoint_R" type="Node2D" parent="."]
+position = Vector2( 65, 0 )
+
+[node name="StartingPoint_L" type="Node2D" parent="."]
+position = Vector2( -65, 0 )
