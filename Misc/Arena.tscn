@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Misc/Ball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Board/Board.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Misc/Ball.png" type="Texture" id=4]
 [ext_resource path="res://Misc/Restart.gd" type="Script" id=5]
 [ext_resource path="res://Misc/orange kid.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Misc/Dialouge.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.35672
@@ -323,3 +324,5 @@ position = Vector2( 65, 0 )
 
 [node name="StartingPoint_L" type="Node2D" parent="."]
 position = Vector2( -65, 0 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 7 )]

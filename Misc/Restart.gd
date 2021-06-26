@@ -17,11 +17,13 @@ onready var dValue = get_node("Screen Shake/Duration/Fast4")
 
 #Get the object to adjust screenshake
 onready var ball = get_tree().get_current_scene().get_node("Ball")
+onready var label = get_tree().get_current_scene().get_node("CanvasLayer/Conversation_Handler/Dialogue/Label")
 
 
 var speedValue = 0
 var intensityValue = 0
 var durationValue = 0
+
 
 func _process(delta):
 	
