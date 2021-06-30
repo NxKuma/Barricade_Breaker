@@ -7,7 +7,6 @@ const MAX_SPEED = 110
 var velocity = Vector2.ZERO
 var input_vector = Vector2.ZERO
 
-onready var slash = get_node("StaticBody2D")
 onready var Aplayer = get_node("AnimationTree")
 onready var Atree = get_node("AnimationTree").get("parameters/playback")
 

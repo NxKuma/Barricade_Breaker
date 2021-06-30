@@ -27,7 +27,7 @@ onready var line = get_node("Line2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sMeter.frame = 3
+	sMeter.frame = 0
 	visible = false
 	line.visible = false
 
@@ -35,6 +35,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity*delta)
+	print(scale_tween.is_active())
 	
 	if velocity == Vector2.ZERO:
 		startPoint.visible = true
@@ -42,7 +43,10 @@ func _physics_process(delta):
 		startPoint.visible = false
 	
 	if position == startL.position or startR.position:
-		line.visible = true
+		if scale_tween.is_active() == false:
+			line.visible = true
+		else:
+			line.visible = false
 	
 	if collision_info:
 		var col_name = collision_info.collider.name

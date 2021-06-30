@@ -21,7 +21,6 @@ func _ready():
 	lBar.frame = 0
 	centerSprite.frame = 0
 	aTree.active = true
-	print(centerSprite.frame)
 	
 
 func _shake():

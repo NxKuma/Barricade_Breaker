@@ -6,7 +6,10 @@ var camera_shake_duration = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+#	PAUSE_MODE_INHERIT = 0 
+#	PAUSE_MODE_STOP = 1 
+	self.set_pause_mode(Node.PAUSE_MODE_PROCESS)
+	pass
 
 
 func shake(intensity, duration):
