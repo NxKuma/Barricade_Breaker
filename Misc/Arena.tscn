@@ -38,6 +38,10 @@ zoom = Vector2( 0.35, 0.45 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 117.599, 0 )
 
+[node name="Player2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -111.383, 0.561234 )
+rotation = 3.14159
+
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2( -155.797, 113.916 )
 script = ExtResource( 5 )
