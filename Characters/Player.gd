@@ -1,14 +1,23 @@
 extends KinematicBody2D
 
+
+
+#var default = preload("res://Characters/Textures/Sus_anim-Sheet.png")
+#var captain = preload("res://Characters/Textures/Captain_anim-Sheet.png")
+#var gecko = preload("res://Characters/Textures/Gecko_anim-Sheet.png")
+#var kiara = preload("res://Characters/Textures/Kiara_anim-Sheet.png")
+#var amogus = preload("res://Characters/Textures/Sus_anim-Sheet.png")
+
+
 var FRICTION = 170
 var ACCELERATION = 260
 var MAX_SPEED = 160
-
 var velocity = Vector2.ZERO
 var input_vector = Vector2.ZERO
 
 onready var Aplayer = get_node("AnimationTree")
 onready var Atree = get_node("AnimationTree").get("parameters/playback")
+onready var sprite = get_node("Sprite")
 
 
 func _ready():

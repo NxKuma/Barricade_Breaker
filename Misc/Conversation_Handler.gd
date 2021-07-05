@@ -73,6 +73,10 @@ func _physics_process(delta):
 		label.percent_visible += delta
 		speed_complete = 0
 		
+	if label.percent_visible < 1 and Input.is_action_just_pressed("ui_accept"):
+		label.percent_visible = 1
+		
+		
 #	if button.visible == true:
 #		button_tree.play("Idle")
 

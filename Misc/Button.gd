@@ -19,7 +19,7 @@ func _physics_process(delta):
 		
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and click_count == 1:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and click_count == 1 and visible == true:
 		if get_rect().has_point(get_local_mouse_position()):
 			tree.travel("Click")
 			click_count += 1
