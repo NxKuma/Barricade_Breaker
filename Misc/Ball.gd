@@ -14,6 +14,7 @@ var animName = ["1ST", "2ND", "3RD"]
 var rightBar = 0
 var leftBar = 0
 
+onready var board = get_tree().get_current_scene().get_node("../Board")
 onready var sMeter = get_tree().get_current_scene().get_node("Board/Center")
 onready var bar1 = get_tree().get_current_scene().get_node("Board/Barricade/RightBar")
 onready var bar2 = get_tree().get_current_scene().get_node("Board/Barricade_2/LeftBar")
@@ -31,11 +32,23 @@ func _ready():
 	visible = false
 	line.visible = false
 
+func _pop_up():
+	Engine.time_scale = 0.3
+	yield(get_tree().create_timer(.3),"timeout")
+	Engine.time_scale = 1
+	
+	speed = 0
+	sMeter.frame = 3
+	line.visible = false
+	
+	visible = false
+	scale_tween.interpolate_property(self,"scale",Vector2(0,0),Vector2(0.7,0.7),1,Tween.TRANS_ELASTIC,Tween.EASE_OUT)
+	visible = true
+	scale_tween.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity*delta)
-	print(scale_tween.is_active())
 	
 	if velocity == Vector2.ZERO:
 		startPoint.visible = true
@@ -48,11 +61,15 @@ func _physics_process(delta):
 		else:
 			line.visible = false
 	
+	
 	if collision_info:
 		var col_name = collision_info.collider.name
 		
 		if col_name == "RightBound":
 			bar1.play(animName[rightBar])
+			position = startL.position
+			velocity = Vector2.ZERO
+			_pop_up()
 			if rightBar < 2:
 				rightBar += 1
 			else:
@@ -62,6 +79,9 @@ func _physics_process(delta):
 			
 		if col_name == "LeftBound":
 			bar2.play(animName[leftBar])
+			position = startR.position
+			velocity = Vector2.ZERO
+			_pop_up()
 			if leftBar < 2:
 				leftBar += 1
 			else:
@@ -71,9 +91,7 @@ func _physics_process(delta):
 		
 		velocity = velocity.bounce(collision_info.normal)
 		
-#		if col_name == "Slasher":
-#			CamShake.shake(1.5, duration)
-			
+
 		if col_name == "Slasher":
 			CamShake.shake(1.5, duration)
 			Engine.time_scale = 0.1

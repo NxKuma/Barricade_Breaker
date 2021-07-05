@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Misc/Character_Select/Select1.png" type="Texture" id=2]
 [ext_resource path="res://Characters/Portrait-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Texture/Shimmer.tres" type="Material" id=4]
 [ext_resource path="res://Misc/Black.png" type="Texture" id=5]
 [ext_resource path="res://Misc/Character_Select/Select2.png" type="Texture" id=9]
 
@@ -29,7 +31,9 @@ scale = Vector2( 0.0373317, 0.0945839 )
 texture = ExtResource( 9 )
 
 [node name="Player" parent="Select_Panel/Select" instance=ExtResource( 1 )]
-position = Vector2( -1.12247, 45.2726 )
+position = Vector2( 0, 45 )
+scale = Vector2( 1.11, 0.75 )
+skin = 2
 
 [node name="Gecko" type="Sprite" parent="Select_Panel/Select"]
 self_modulate = Color( 1, 1, 1, 0.686275 )
@@ -40,12 +44,32 @@ texture = ExtResource( 3 )
 hframes = 4
 frame = 2
 
+[node name="Shimmer" type="ColorRect" parent="Select_Panel/Select"]
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -45.5
+margin_right = -40.0
+margin_bottom = -45.5
+focus_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Select2" type="Sprite" parent="Select_Panel"]
 position = Vector2( -2.76363, 0 )
 scale = Vector2( 0.0373317, 0.0945839 )
 texture = ExtResource( 9 )
 
+[node name="Lock" type="Sprite" parent="Select_Panel/Select2"]
+scale = Vector2( 1, 0.666668 )
+texture = ExtResource( 2 )
+
 [node name="Player" parent="Select_Panel/Select2" instance=ExtResource( 1 )]
+position = Vector2( 0, 45 )
+scale = Vector2( 1.11, 0.75 )
+skin = 1
 
 [node name="Captain" type="Sprite" parent="Select_Panel/Select2"]
 self_modulate = Color( 1, 1, 1, 0.686275 )
@@ -55,12 +79,31 @@ z_index = -1
 texture = ExtResource( 3 )
 hframes = 4
 
+[node name="Shimmer" type="ColorRect" parent="Select_Panel/Select2"]
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -45.5
+margin_right = -40.0
+margin_bottom = -45.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Select3" type="Sprite" parent="Select_Panel"]
 position = Vector2( 0.409668, 0 )
 scale = Vector2( 0.0373317, 0.0945839 )
 texture = ExtResource( 9 )
 
+[node name="Lock2" type="Sprite" parent="Select_Panel/Select3"]
+scale = Vector2( 1, 0.666668 )
+texture = ExtResource( 2 )
+
 [node name="Player" parent="Select_Panel/Select3" instance=ExtResource( 1 )]
+position = Vector2( 0, 45 )
+scale = Vector2( 1.11, 0.75 )
+skin = 3
 
 [node name="Kiara" type="Sprite" parent="Select_Panel/Select3"]
 self_modulate = Color( 1, 1, 1, 0.686275 )
@@ -71,12 +114,31 @@ texture = ExtResource( 3 )
 hframes = 4
 frame = 1
 
+[node name="Shimmer" type="ColorRect" parent="Select_Panel/Select3"]
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -45.5
+margin_right = -40.0
+margin_bottom = -45.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Select4" type="Sprite" parent="Select_Panel"]
 position = Vector2( 3.52667, 0 )
 scale = Vector2( 0.0373317, 0.0945839 )
 texture = ExtResource( 9 )
 
+[node name="Lock3" type="Sprite" parent="Select_Panel/Select4"]
+scale = Vector2( 1, 0.666668 )
+texture = ExtResource( 2 )
+
 [node name="Player" parent="Select_Panel/Select4" instance=ExtResource( 1 )]
+position = Vector2( 0, 45 )
+scale = Vector2( 1.11, 0.75 )
+skin = 4
 
 [node name="Sus" type="Sprite" parent="Select_Panel/Select4"]
 self_modulate = Color( 1, 1, 1, 0.686275 )
@@ -87,12 +149,31 @@ texture = ExtResource( 3 )
 hframes = 4
 frame = 3
 
+[node name="Shimmer" type="ColorRect" parent="Select_Panel/Select4"]
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -45.5
+margin_right = -40.0
+margin_bottom = -45.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Select5" type="Sprite" parent="Select_Panel"]
 position = Vector2( 6.681, 0 )
 scale = Vector2( 0.0373317, 0.0945839 )
 texture = ExtResource( 9 )
 
+[node name="Lock4" type="Sprite" parent="Select_Panel/Select5"]
+scale = Vector2( 1, 0.666668 )
+texture = ExtResource( 2 )
+
 [node name="Player" parent="Select_Panel/Select5" instance=ExtResource( 1 )]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, 45 )
+scale = Vector2( 1.11, 0.75 )
 
 [node name="Gecko3" type="Sprite" parent="Select_Panel/Select5"]
 modulate = Color( 0, 0, 0, 1 )
@@ -103,3 +184,15 @@ z_index = -1
 texture = ExtResource( 3 )
 hframes = 4
 frame = 2
+
+[node name="Shimmer" type="ColorRect" parent="Select_Panel/Select5"]
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -45.5
+margin_right = -40.0
+margin_bottom = -45.5
+__meta__ = {
+"_edit_use_anchors_": false
+}

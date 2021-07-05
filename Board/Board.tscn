@@ -372,7 +372,7 @@ position = Vector2( 0.749153, -0.0936433 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 hframes = 19
-frame = 2
+frame = 1
 
 [node name="Barricade" type="Sprite" parent="."]
 position = Vector2( 76.98, 0 )

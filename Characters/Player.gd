@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
+export(int, "Default", "Captain", "Gecko", "Kiara", "Amogus") var skin = 0
 
-
-#var default = preload("res://Characters/Textures/Sus_anim-Sheet.png")
-#var captain = preload("res://Characters/Textures/Captain_anim-Sheet.png")
-#var gecko = preload("res://Characters/Textures/Gecko_anim-Sheet.png")
-#var kiara = preload("res://Characters/Textures/Kiara_anim-Sheet.png")
-#var amogus = preload("res://Characters/Textures/Sus_anim-Sheet.png")
+var default = preload("res://Characters/Textures/Sample_Anim2-Sheet.png")
+var captain = preload("res://Characters/Textures/Captain_anim-Sheet.png")
+var gecko = preload("res://Characters/Textures/Gecko_anim-Sheet.png")
+var kiara = preload("res://Characters/Textures/Kiara_anim-Sheet.png")
+var amogus = preload("res://Characters/Textures/Sus_anim-Sheet.png")
 
 
 var FRICTION = 170
@@ -22,6 +22,18 @@ onready var sprite = get_node("Sprite")
 
 func _ready():
 	Aplayer.active = true
+	match skin:
+		0:
+			sprite.set_texture(default)
+		1:
+			sprite.set_texture(captain)
+		2:
+			sprite.set_texture(gecko)
+		3:
+			sprite.set_texture(kiara)
+		4:
+			sprite.set_texture(amogus)
+			
 
 func _input(event):
 	
