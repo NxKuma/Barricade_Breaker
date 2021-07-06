@@ -67,7 +67,7 @@ func _physics_process(delta):
 		
 		if col_name == "RightBound":
 			bar1.play(animName[rightBar])
-			position = startL.position
+			position = startR.position
 			velocity = Vector2.ZERO
 			_pop_up()
 			if rightBar < 2:
@@ -79,7 +79,7 @@ func _physics_process(delta):
 			
 		if col_name == "LeftBound":
 			bar2.play(animName[leftBar])
-			position = startR.position
+			position = startL.position
 			velocity = Vector2.ZERO
 			_pop_up()
 			if leftBar < 2:

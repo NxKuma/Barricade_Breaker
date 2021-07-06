@@ -1,13 +1,208 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Misc/Character_Select/Select1.png" type="Texture" id=2]
 [ext_resource path="res://Characters/Portrait-Sheet.png" type="Texture" id=3]
-[ext_resource path="res://Texture/Shimmer.tres" type="Material" id=4]
+[ext_resource path="res://Misc/Mask.png" type="Texture" id=4]
 [ext_resource path="res://Misc/Black.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Character Selectoin.gd" type="Script" id=6]
+[ext_resource path="res://Characters/Shimmer.gd" type="Script" id=7]
 [ext_resource path="res://Misc/Character_Select/Select2.png" type="Texture" id=9]
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float cutoff: hint_range(0.0,1.0);
+uniform sampler2D mask: hint_albedo;
+
+void fragment( )
+{
+	float value = texture(mask,UV).r;
+	if(value < cutoff){
+		COLOR = vec4(COLOR.rgb, 0.0)
+	} else{
+		COLOR = vec4(COLOR.rgb, 1.0)
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/cutoff = 0.0
+shader_param/mask = ExtResource( 4 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Shimmer"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/cutoff = 0.0
+shader_param/mask = ExtResource( 4 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Shimmer"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/cutoff = 0.0
+shader_param/mask = ExtResource( 4 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Shimmer"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/cutoff = 1.0
+shader_param/mask = ExtResource( 4 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Shimmer"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/cutoff = 0.0
+shader_param/mask = ExtResource( 4 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Shimmer"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [node name="Character Selectoin" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -0.8909, 0 )
@@ -30,6 +225,12 @@ position = Vector2( -5.937, 0 )
 scale = Vector2( 0.0373317, 0.0945839 )
 texture = ExtResource( 9 )
 
+[node name="Lock" type="Sprite" parent="Select_Panel/Select"]
+visible = false
+position = Vector2( 85.0047, 0 )
+scale = Vector2( 1, 0.666668 )
+texture = ExtResource( 2 )
+
 [node name="Player" parent="Select_Panel/Select" instance=ExtResource( 1 )]
 position = Vector2( 0, 45 )
 scale = Vector2( 1.11, 0.75 )
@@ -45,7 +246,7 @@ hframes = 4
 frame = 2
 
 [node name="Shimmer" type="ColorRect" parent="Select_Panel/Select"]
-material = ExtResource( 4 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
@@ -53,9 +254,13 @@ margin_top = -45.5
 margin_right = -40.0
 margin_bottom = -45.5
 focus_mode = 2
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Select_Panel/Select/Shimmer"]
+anims/Shimmer = SubResource( 7 )
 
 [node name="Select2" type="Sprite" parent="Select_Panel"]
 position = Vector2( -2.76363, 0 )
@@ -80,16 +285,20 @@ texture = ExtResource( 3 )
 hframes = 4
 
 [node name="Shimmer" type="ColorRect" parent="Select_Panel/Select2"]
-material = ExtResource( 4 )
+material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -45.5
 margin_right = -40.0
 margin_bottom = -45.5
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Select_Panel/Select2/Shimmer"]
+anims/Shimmer = SubResource( 8 )
 
 [node name="Select3" type="Sprite" parent="Select_Panel"]
 position = Vector2( 0.409668, 0 )
@@ -115,16 +324,20 @@ hframes = 4
 frame = 1
 
 [node name="Shimmer" type="ColorRect" parent="Select_Panel/Select3"]
-material = ExtResource( 4 )
+material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -45.5
 margin_right = -40.0
 margin_bottom = -45.5
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Select_Panel/Select3/Shimmer"]
+anims/Shimmer = SubResource( 9 )
 
 [node name="Select4" type="Sprite" parent="Select_Panel"]
 position = Vector2( 3.52667, 0 )
@@ -150,16 +363,21 @@ hframes = 4
 frame = 3
 
 [node name="Shimmer" type="ColorRect" parent="Select_Panel/Select4"]
-material = ExtResource( 4 )
+visible = false
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -45.5
 margin_right = -40.0
 margin_bottom = -45.5
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="Select_Panel/Select4/Shimmer"]
+anims/Shimmer = SubResource( 10 )
 
 [node name="Select5" type="Sprite" parent="Select_Panel"]
 position = Vector2( 6.681, 0 )
@@ -186,13 +404,17 @@ hframes = 4
 frame = 2
 
 [node name="Shimmer" type="ColorRect" parent="Select_Panel/Select5"]
-material = ExtResource( 4 )
+material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -45.5
 margin_right = -40.0
 margin_bottom = -45.5
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Select_Panel/Select5/Shimmer"]
+anims/Shimmer = SubResource( 11 )
