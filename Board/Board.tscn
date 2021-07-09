@@ -365,7 +365,7 @@ script = ExtResource( 4 )
 [node name="Board" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 11
-frame = 9
+frame = 10
 
 [node name="Center" type="Sprite" parent="."]
 position = Vector2( 0.749153, -0.0936433 )

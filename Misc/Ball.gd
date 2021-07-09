@@ -25,6 +25,10 @@ onready var startPoint = get_node("Starting Point")
 onready var scale_tween = get_node("Scale_Tween")
 onready var line = get_node("Line2D")
 
+func _wait(seconds):
+	Engine.time_scale = 0.3
+	yield(get_tree().create_timer(seconds),"timeout")
+	Engine.time_scale = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,15 +37,11 @@ func _ready():
 	line.visible = false
 
 func _pop_up():
-	Engine.time_scale = 0.3
-	yield(get_tree().create_timer(.3),"timeout")
-	Engine.time_scale = 1
-	
+	CamShake.shake(0.8,0.2)
+	velocity = Vector2.ZERO
 	speed = 0
 	sMeter.frame = 3
-	line.visible = false
 	
-	visible = false
 	scale_tween.interpolate_property(self,"scale",Vector2(0,0),Vector2(0.7,0.7),1,Tween.TRANS_ELASTIC,Tween.EASE_OUT)
 	visible = true
 	scale_tween.start()
@@ -68,7 +68,9 @@ func _physics_process(delta):
 		if col_name == "RightBound":
 			bar1.play(animName[rightBar])
 			position = startR.position
-			velocity = Vector2.ZERO
+			line.visible = false
+			visible = false
+			_wait(0.2)
 			_pop_up()
 			if rightBar < 2:
 				rightBar += 1
@@ -80,7 +82,9 @@ func _physics_process(delta):
 		if col_name == "LeftBound":
 			bar2.play(animName[leftBar])
 			position = startL.position
-			velocity = Vector2.ZERO
+			line.visible = false
+			visible = false
+			_wait(0.2)
 			_pop_up()
 			if leftBar < 2:
 				leftBar += 1

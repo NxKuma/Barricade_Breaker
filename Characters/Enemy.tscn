@@ -1,0 +1,229 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Characters/Textures/Gecko_anim-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Player.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.4697
+height = 8.136
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.02843
+height = 11.5096
+
+[sub_resource type="Animation" id=3]
+resource_name = "Attack"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 15, 16, 17, 18, 19 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slasher/CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 25.8651, -1.52944 ), Vector2( 13.9461, -2.05917 ), Vector2( 0.221804, -2.98642 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Slasher/CollisionPolygon2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Back"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Forward"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Shield"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 22, 23 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Back"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Forward"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Shield"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachine" id=27]
+states/Attack/node = SubResource( 8 )
+states/Attack/position = Vector2( 632, 53 )
+states/Back/node = SubResource( 9 )
+states/Back/position = Vector2( 429, 276 )
+states/Forward/node = SubResource( 10 )
+states/Forward/position = Vector2( 229, 48 )
+states/Idle/node = SubResource( 11 )
+states/Idle/position = Vector2( 142, 218 )
+states/Shield/node = SubResource( 12 )
+states/Shield/position = Vector2( 668, 199 )
+transitions = [ "Idle", "Forward", SubResource( 13 ), "Idle", "Back", SubResource( 14 ), "Idle", "Attack", SubResource( 15 ), "Idle", "Shield", SubResource( 16 ), "Shield", "Idle", SubResource( 17 ), "Attack", "Idle", SubResource( 18 ), "Forward", "Idle", SubResource( 19 ), "Back", "Idle", SubResource( 20 ), "Back", "Forward", SubResource( 21 ), "Forward", "Back", SubResource( 22 ), "Attack", "Back", SubResource( 23 ), "Attack", "Forward", SubResource( 24 ), "Forward", "Attack", SubResource( 25 ), "Back", "Attack", SubResource( 26 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -281.48, 89.5288 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
+
+[node name="Player" type="KinematicBody2D"]
+rotation = 3.14159
+collision_mask = 2147483651
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+flip_v = true
+hframes = 24
+frame = 19
+
+[node name="Shield" type="CollisionShape2D" parent="."]
+position = Vector2( -3.45268, -3.32075 )
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5.18782, -1.59293 )
+shape = SubResource( 2 )
+
+[node name="Slasher" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2147483652
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Slasher"]
+position = Vector2( 0.221804, -2.98642 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -2.87369, -7.50421, -4.39667, -7.23935, -6.05433, -6.43854, -7.10545, -5.22975, -7.89379, -2.44428, -8.09104, -0.74304, -8.10402, 1.91787, -7.95205, 3.75274, -7.5259, 5.54423, -6.67968, 7.08199, -4.8981, 8.43481, -2.53308, 9.27571, -4.79397, 1.43501 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 3 )
+anims/Back = SubResource( 4 )
+anims/Forward = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Shield = SubResource( 7 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 27 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 28 )

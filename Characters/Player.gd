@@ -18,6 +18,7 @@ var input_vector = Vector2.ZERO
 onready var Aplayer = get_node("AnimationTree")
 onready var Atree = get_node("AnimationTree").get("parameters/playback")
 onready var sprite = get_node("Sprite")
+onready var speedometer = get_tree().get_current_scene().get_node("Ball")
 
 
 func _ready():

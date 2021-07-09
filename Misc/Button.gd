@@ -18,20 +18,23 @@ func _physics_process(delta):
 		click_count = 1
 		
 
+func next_dialogue():
+	tree.travel("Click")
+	click_count += 1
+	yield(get_tree().create_timer(0.3),"timeout")
+	
+	pop.index += 1
+	if pop.index <= 2:
+		pop.dialouge_set()
+		visible = false
+	else:
+		pop.visible = false
+		get_tree().paused = false
+
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and click_count == 1 and visible == true:
 		if get_rect().has_point(get_local_mouse_position()):
-			tree.travel("Click")
-			click_count += 1
-			yield(get_tree().create_timer(0.3),"timeout")
-			
-			pop.index += 1
-			if pop.index <= 2:
-				pop.dialouge_set()
-				visible = false
-			else:
-				pop.visible = false
-				get_tree().paused = false
+			next_dialogue()
 			
 
 
