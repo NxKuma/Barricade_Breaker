@@ -7,6 +7,8 @@ onready var button = get_node("Conversation_Handler/Dialogue/Button")
 onready var button_anim = get_node("Conversation_Handler/Dialogue/Button/AnimationPlayer")
 onready var button_tree = get_node("Conversation_Handler/Dialogue/Button/AnimationTree").get("parameters/playback")
 
+onready var level = get_tree().get_current_scene().get_node("CanvasLayer").get_parent().name
+
 var speed_complete = 0
 var click_count = 1
 var file = File.new()
@@ -14,10 +16,23 @@ var json
 var current_talker
 var pos
 var index = 0
+var max_index
 var text_complete = false
 
 func dialouge_set():
-	file.open("res://Misc/Dialogue.json",file.READ)
+	if level == "Level_1":
+		file.open("res://Board/Dialogues/Level_1.json",file.READ)
+		max_index = 7
+	elif level == "Level_2":
+		file.open("res://Board/Dialogues/Level_2.json",file.READ)
+		max_index = 7
+	elif level == "Level_3":
+		file.open("res://Board/Dialogues/Level_3.json",file.READ)
+		max_index = 7
+	else:
+		file.open("res://Misc/Dialogue.json",file.READ)
+		max_index = 2
+	
 	json = parse_json(file.get_as_text()) 
 	file.close()
 	
@@ -58,6 +73,7 @@ func dialouge_set():
 		right.position = Vector2(924,416)
 
 func _ready():
+	print(level)
 	dialouge_set()
 	left.visible = true
 	right.visible = true

@@ -1,0 +1,22 @@
+{
+    "Frame":{
+        "1": "Kiara", "2": "Gecko", "3": "Crew", "0": "Captain"},
+    "0" : {
+        "pos": "Right" , "frame": 2, "txt_spd": 1, "solo": true, "text": "[wave]Ugh.. My Head[/wave] What happened while I was asleep."},
+    "1" :{
+        "pos": "Left", "frame": 3, "txt_spd" : 1.5, "solo": false, "text":"Who are you?.."},
+    "2" :{
+        "pos": "Right", "frame": 2, "txt_spd" : 1, "solo": false, "text":"Uhmm.. I'm a mechanic in this ship"},
+    "3" :{
+        "pos": "Left", "frame": 3, "txt_spd" : 1, "solo": false, "text":"Seems kinda [color=red][shake]S U S[/shake][/color] to me!?"},
+    "4" :{
+        "pos": "Right", "frame": 2, "txt_spd" : 1, "solo": true, "text":"I have to be careful with this guy"},
+    "5" :{
+        "pos": "Right", "frame": 2, "txt_spd" : 1, "solo": true, "text":"[shake]WAIT!![/shake] What happened to the other crew?"},
+    "6" :{
+        "pos": "Left", "frame": 3, "txt_spd" : 1, "solo": false, "text":"I don't need to tell someone like you"},
+    "7" :{
+        "pos": "Right", "frame": 2, "txt_spd" : 1, "solo": false, "text":"I'll make you then"}
+
+
+}

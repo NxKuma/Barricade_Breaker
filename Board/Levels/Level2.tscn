@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Misc/Ball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Board/Board.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/Debug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Misc/Black.png" type="Texture" id=6]
 [ext_resource path="res://Misc/Dialouge.tscn" type="PackedScene" id=7]
 
-[node name="Arena" type="Node2D"]
+[node name="Level_2" type="Node2D"]
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
 
@@ -39,3 +40,7 @@ position = Vector2( 3.01345, 45.4543 )
 scale = Vector2( 27.3142, 20.6818 )
 z_index = -2
 texture = ExtResource( 6 )
+
+[node name="Kiara" parent="." instance=ExtResource( 5 )]
+position = Vector2( -77.8695, -3.30355 )
+skin = 3

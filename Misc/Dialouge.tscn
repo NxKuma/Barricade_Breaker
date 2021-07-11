@@ -77,7 +77,7 @@ extra_spacing_top = -3
 extra_spacing_bottom = -2
 font_data = ExtResource( 2 )
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Dialogue_Handler" type="CanvasLayer"]
 pause_mode = 2
 
 [node name="Pop" type="Popup" parent="."]
@@ -127,6 +127,7 @@ position = Vector2( 841.352, 512.392 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 hframes = 5
+frame = 2
 script = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pop/Conversation_Handler/Dialogue/Button"]

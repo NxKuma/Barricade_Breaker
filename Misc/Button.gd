@@ -24,7 +24,7 @@ func next_dialogue():
 	yield(get_tree().create_timer(0.3),"timeout")
 	
 	pop.index += 1
-	if pop.index <= 2:
+	if pop.index <= pop.max_index:
 		pop.dialouge_set()
 		visible = false
 	else:

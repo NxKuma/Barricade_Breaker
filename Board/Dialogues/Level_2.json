@@ -1,0 +1,11 @@
+{
+    "Frame":{
+        "1": "Kiara", "2": "Gecko", "3": "Crew", "0": "Captain"},
+    "0" : {
+        "pos": "Right" , "frame": 2, "txt_spd": 1, "solo": true, "text": "[wave]Hello this is a sample text"},
+    "1" :{
+        "pos": "Left", "frame": 3, "txt_spd" : 1, "solo": false, "text":"Hello this is sample text"},
+    "2" :{
+        "pos": "Right", "frame": 1, "txt_spd" : 1, "solo": false, "text":"Hello this is sample text"}
+
+}
