@@ -13,6 +13,7 @@ onready var centerSprite = $Center
 onready var ball = get_tree().get_current_scene().get_node("Ball")
 onready var lPos = get_tree().get_current_scene().get_node("StartingPoint_L")
 onready var rPos = get_tree().get_current_scene().get_node("StartingPoint_R")
+onready var index = get_tree().get_current_scene().get_node("CanvasLayer").get_child(0)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +22,20 @@ func _ready():
 	lBar.frame = 0
 	centerSprite.frame = 0
 	aTree.active = true
+	
+	var prop_index = index.max_index
+	
+	if index.max_index == prop_index:
+		var rand = randi() % 10
+		print(rand)
+		
+		if rand > 5:
+			center.play("Toss_Heads")
+		else:
+			center.play("Toss_Tails")
+		
+		yield(get_tree().create_timer(0.01),"timeout")
+		isTossed = true
 	
 
 func _shake():
@@ -32,18 +47,18 @@ func _on_finished(place: Vector2):
 	ball.visible = true
 	ball.scale_tween.start()
 
-func _input(event):
-	if Input.is_action_just_pressed("ui_accept") and isTossed == false:
-		var rand = randi() % 10
-		print(rand)
-		
-		if rand > 5:
-			center.play("Toss_Heads")
-		else:
-			center.play("Toss_Tails")
-		
-		yield(get_tree().create_timer(0.01),"timeout")
-		isTossed = true
+#func _input(event):
+#	if Input.is_action_just_pressed("ui_accept") and isTossed == false:
+#		var rand = randi() % 10
+#		print(rand)
+#
+#		if rand > 5:
+#			center.play("Toss_Heads")
+#		else:
+#			center.play("Toss_Tails")
+#
+#		yield(get_tree().create_timer(0.01),"timeout")
+#		isTossed = true
 
 
 

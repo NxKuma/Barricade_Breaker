@@ -25,7 +25,7 @@ func dialouge_set():
 		max_index = 7
 	elif level == "Level_2":
 		file.open("res://Board/Dialogues/Level_2.json",file.READ)
-		max_index = 7
+		max_index = 8
 	elif level == "Level_3":
 		file.open("res://Board/Dialogues/Level_3.json",file.READ)
 		max_index = 7

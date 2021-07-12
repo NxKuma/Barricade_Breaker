@@ -127,7 +127,7 @@ position = Vector2( 841.352, 512.392 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 hframes = 5
-frame = 2
+frame = 3
 script = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pop/Conversation_Handler/Dialogue/Button"]

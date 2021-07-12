@@ -8,6 +8,7 @@ var max_speed = 15
 
 var velocity = Vector2.ZERO
 var speed = 0
+var touched = 0
 
 #For Changing Animation if barricade is hit
 var animName = ["1ST", "2ND", "3RD"]
@@ -24,6 +25,7 @@ onready var startL = get_tree().get_current_scene().get_node("StartingPoint_L")
 onready var startPoint = get_node("Starting Point")
 onready var scale_tween = get_node("Scale_Tween")
 onready var line = get_node("Line2D")
+onready var timer = get_node("Timer")
 
 func _wait(seconds):
 	Engine.time_scale = 0.3
@@ -62,6 +64,7 @@ func _physics_process(delta):
 			line.visible = false
 	
 	
+	
 	if collision_info:
 		var col_name = collision_info.collider.name
 		
@@ -78,7 +81,7 @@ func _physics_process(delta):
 				#talo na dapat to 
 				yield(get_tree().create_timer(.4),"timeout")
 				get_tree().reload_current_scene()
-			
+
 		if col_name == "LeftBound":
 			bar2.play(animName[leftBar])
 			position = startL.position
@@ -92,21 +95,27 @@ func _physics_process(delta):
 				#talo na dapat to 
 				yield(get_tree().create_timer(.4),"timeout")
 				get_tree().reload_current_scene()
-		
+#
 		velocity = velocity.bounce(collision_info.normal)
-		
 
 		if col_name == "Slasher":
 			CamShake.shake(1.5, duration)
 			Engine.time_scale = 0.1
 			yield(get_tree().create_timer(.04),"timeout")
 			Engine.time_scale = 1
+			touched += 1
 			if speed < max_speed:
 				if velocity == Vector2.ZERO:
 					velocity.x += 50
 					velocity.y += 50
 				velocity.x *= speed_up
 				velocity.y *= speed_up
-				speed += 1
-				sMeter.frame += 1
-		
+				print(touched)
+				if touched == 1:
+					speed += 1
+					sMeter.frame += 1
+				timer.start()
+
+
+func _on_Timer_timeout():
+	touched = 0

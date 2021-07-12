@@ -43,3 +43,8 @@ script = ExtResource( 3 )
 position = Vector2( 0, 6 )
 
 [node name="Scale_Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

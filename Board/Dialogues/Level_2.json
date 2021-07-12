@@ -2,10 +2,22 @@
     "Frame":{
         "1": "Kiara", "2": "Gecko", "3": "Crew", "0": "Captain"},
     "0" : {
-        "pos": "Right" , "frame": 2, "txt_spd": 1, "solo": true, "text": "[wave]Hello this is a sample text"},
+        "pos": "Right" , "frame": 2, "txt_spd": 1, "solo": true, "text": "[wave]Whoo..[/wave] that was a hard time.."},
     "1" :{
-        "pos": "Left", "frame": 3, "txt_spd" : 1, "solo": false, "text":"Hello this is sample text"},
+        "pos": "Right", "frame": 2, "txt_spd" : 1, "solo": true, "text":"[shake] WAIT IS THAT"},
     "2" :{
-        "pos": "Right", "frame": 1, "txt_spd" : 1, "solo": false, "text":"Hello this is sample text"}
+        "pos": "Right", "frame": 2, "txt_spd" : 1, "solo": true, "text":"a [rainbow sat=10 value=20][wave]VTUBER?!"},
+    "3" :{
+        "pos": "Left", "frame": 1, "txt_spd" : 1.2, "solo": false, "text":"...."},
+    "4" :{
+        "pos": "Right", "frame": 2, "txt_spd" : 1, "solo": false, "text":"Who are you supposed to be?"},
+    "5" :{
+        "pos": "Left", "frame": 1, "txt_spd" : 1, "solo": false, "text":"[shake]THATS [color=red]RUDE[/color][/shake] "},
+    "6" :{
+        "pos": "Left", "frame": 1, "txt_spd" : 0.6, "solo": false, "text":"I'm a [rainbow sat=10 value=20]VTUBER[/rainbow] but the developers doesn't have the copyright for my likeness"},
+    "7" :{
+        "pos": "Left", "frame": 1, "txt_spd" : 0.6, "solo": false, "text":"For your Rudeness, You'll be my next [shake][color=red]OPPONENT"},
+    "8" :{
+        "pos": "Right", "frame": 1, "txt_spd" : 0.6, "solo": false, "text":"Huh?.. [wave]Waaiitt!!"}
 
 }
