@@ -65,8 +65,13 @@ func _on_finished(place: Vector2):
 func _on_CenterAnim_animation_finished(anim_name):
 	if anim_name == "Toss_Heads":
 		_on_finished(rPos.global_position)
+		centerSprite.frame = 3
 	else:
 		_on_finished(lPos.global_position)
-	
-	centerSprite.frame = 3
+		centerSprite.frame = 3
+
+	if anim_name == "Dead_L" or anim_name == "Dead_R":
+		yield(get_tree().create_timer(.4),"timeout")
+		Engine.time_scale = 1
+		get_tree().reload_current_scene()
 	

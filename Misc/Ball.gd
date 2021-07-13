@@ -15,7 +15,8 @@ var animName = ["1ST", "2ND", "3RD"]
 var rightBar = 0
 var leftBar = 0
 
-onready var board = get_tree().get_current_scene().get_node("../Board")
+onready var board = get_tree().get_current_scene().get_node("Board")
+onready var board_anim = get_tree().get_current_scene().get_node("Board/BoardAnim")
 onready var sMeter = get_tree().get_current_scene().get_node("Board/Center")
 onready var bar1 = get_tree().get_current_scene().get_node("Board/Barricade/RightBar")
 onready var bar2 = get_tree().get_current_scene().get_node("Board/Barricade_2/LeftBar")
@@ -78,9 +79,9 @@ func _physics_process(delta):
 			if rightBar < 2:
 				rightBar += 1
 			else:
-				#talo na dapat to 
-				yield(get_tree().create_timer(.4),"timeout")
-				get_tree().reload_current_scene()
+				Engine.time_scale = 0.7
+				board.aTree.active = false
+				board_anim.play("Dead_R")
 
 		if col_name == "LeftBound":
 			bar2.play(animName[leftBar])
@@ -92,9 +93,10 @@ func _physics_process(delta):
 			if leftBar < 2:
 				leftBar += 1
 			else:
-				#talo na dapat to 
-				yield(get_tree().create_timer(.4),"timeout")
-				get_tree().reload_current_scene()
+				Engine.time_scale = 0.7
+				board.aTree.active = false
+				board_anim.play("Dead_L")
+				
 #
 		velocity = velocity.bounce(collision_info.normal)
 
