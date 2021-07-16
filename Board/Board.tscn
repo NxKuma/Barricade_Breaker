@@ -366,41 +366,41 @@ tracks/0/keys = {
 [sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Begin"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Dead_L"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Dead_R"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Wriggle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
-[sub_resource type="AnimationNodeStateMachine" id=18]
+[sub_resource type="AnimationNodeStateMachine" id=22]
 states/Begin/node = SubResource( 15 )
 states/Begin/position = Vector2( 348, 49 )
-states/Dead_L/node = SubResource( 23 )
+states/Dead_L/node = SubResource( 16 )
 states/Dead_L/position = Vector2( 377, 186 )
-states/Dead_R/node = SubResource( 24 )
+states/Dead_R/node = SubResource( 17 )
 states/Dead_R/position = Vector2( 777, 186 )
-states/Wriggle/node = SubResource( 16 )
+states/Wriggle/node = SubResource( 18 )
 states/Wriggle/position = Vector2( 565, 80 )
-transitions = [ "Begin", "Wriggle", SubResource( 17 ), "Wriggle", "Dead_L", SubResource( 25 ), "Wriggle", "Dead_R", SubResource( 26 ) ]
+transitions = [ "Begin", "Wriggle", SubResource( 19 ), "Wriggle", "Dead_L", SubResource( 20 ), "Wriggle", "Dead_R", SubResource( 21 ) ]
 start_node = "Begin"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 0.440445, 41.9958 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=25]
 length = 2.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Center:frame")
@@ -415,7 +415,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=26]
 length = 2.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Center:frame")
@@ -437,7 +437,7 @@ script = ExtResource( 4 )
 [node name="Board" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 37
-frame = 7
+frame = 10
 
 [node name="Center" type="Sprite" parent="."]
 position = Vector2( 0.749153, -0.0936433 )
@@ -519,7 +519,7 @@ shape = SubResource( 9 )
 position = Vector2( -0.0342107, 43.7909 )
 shape = SubResource( 9 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BoardShape" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 10 )
 
@@ -530,10 +530,10 @@ anims/Dead_R = SubResource( 13 )
 anims/Wriggle = SubResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 18 )
+tree_root = SubResource( 22 )
 anim_player = NodePath("../BoardAnim")
 active = true
-parameters/playback = SubResource( 19 )
+parameters/playback = SubResource( 23 )
 
 [node name="CenterLine" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -541,9 +541,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterLine"]
 position = Vector2( 0.472458, -0.787453 )
-shape = SubResource( 20 )
+shape = SubResource( 24 )
 
 [node name="CenterAnim" type="AnimationPlayer" parent="."]
-anims/Toss_Heads = SubResource( 21 )
-anims/Toss_Tails = SubResource( 22 )
+anims/Toss_Heads = SubResource( 25 )
+anims/Toss_Tails = SubResource( 26 )
 [connection signal="animation_finished" from="CenterAnim" to="." method="_on_CenterAnim_animation_finished"]

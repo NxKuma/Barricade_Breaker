@@ -18,6 +18,9 @@ var leftBar = 0
 onready var board = get_tree().get_current_scene().get_node("Board")
 onready var board_anim = get_tree().get_current_scene().get_node("Board/BoardAnim")
 onready var sMeter = get_tree().get_current_scene().get_node("Board/Center")
+onready var cLine = get_tree().get_current_scene().get_node("Board/CenterLine")
+
+
 onready var bar1 = get_tree().get_current_scene().get_node("Board/Barricade/RightBar")
 onready var bar2 = get_tree().get_current_scene().get_node("Board/Barricade_2/LeftBar")
 onready var startR = get_tree().get_current_scene().get_node("StartingPoint_R")
@@ -48,6 +51,15 @@ func _pop_up():
 	scale_tween.interpolate_property(self,"scale",Vector2(0,0),Vector2(0.7,0.7),1,Tween.TRANS_ELASTIC,Tween.EASE_OUT)
 	visible = true
 	scale_tween.start()
+	
+
+func end(name: String, player: KinematicBody2D):
+	Engine.time_scale = 0.7
+	board.aTree.active = false
+	board_anim.play(name)
+	yield(get_tree().create_timer(0.35),"timeout")
+	player.visible = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -96,6 +108,8 @@ func _physics_process(delta):
 				Engine.time_scale = 0.7
 				board.aTree.active = false
 				board_anim.play("Dead_L")
+				yield(get_tree().create_timer(0.35),"timeout")
+				
 				
 #
 		velocity = velocity.bounce(collision_info.normal)
