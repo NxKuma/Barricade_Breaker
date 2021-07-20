@@ -5,7 +5,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "A_Press"
-length = 0.7
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "Click"
-length = 0.7
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -39,7 +39,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "D_Press"
-length = 0.7
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -56,7 +56,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "S_Press"
-length = 0.7
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -73,7 +73,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "Space_Bar"
-length = 0.7
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -90,7 +90,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "W_Press"
-length = 0.7
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
