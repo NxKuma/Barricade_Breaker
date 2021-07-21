@@ -1,0 +1,185 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Characters/GDScript/Character Selectoin.gd" type="Script" id=1]
+[ext_resource path="res://Misc/UI/Button_Tutorial.gd" type="Script" id=2]
+[ext_resource path="res://Misc/UI/Selection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Misc/UI/Input.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Misc/UI/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/Textures/Portrait-Sheet.png" type="Texture" id=6]
+[ext_resource path="res://Misc/Graphic/Black.png" type="Texture" id=7]
+[ext_resource path="res://Misc/UI/Tutorial_Border.png" type="Texture" id=8]
+[ext_resource path="res://Misc/UI/Tutorial_Button.png" type="Texture" id=9]
+[ext_resource path="res://Misc/orange kid.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Characters/Scenes/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Characters/Scenes/Tutorial_Player.gd" type="Script" id=12]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color: hint_color = vec4(1.0);
+uniform float flash_modifier: hint_range(0.0,1.0) = 1;
+
+void fragment(){
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 1.0
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 1.0
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 1.0
+
+[sub_resource type="DynamicFont" id=6]
+size = 26
+outline_color = Color( 0.85098, 0.945098, 0.988235, 1 )
+extra_spacing_bottom = -4
+font_data = ExtResource( 10 )
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 6.77208, 1.88988, -6.77208, -1.88988, 89.5211, -176.743, 0, 0, 0, 0, -72.4059, -179.155, 0, 0, 0, 0, -72.394, -26.8944, 0, 0, 0, 0, 90.3133, -27.3962, 0, 0, 0, 0, 89.8017, -176.743, 0, 0, 0, 0, 89.5211, -176.743 )
+}
+
+[node name="Char_Select" type="Node2D"]
+
+[node name="Black" type="Sprite" parent="."]
+scale = Vector2( 75, 50 )
+texture = ExtResource( 7 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -0.8909, 0 )
+current = true
+
+[node name="Tutorial_Border" type="Sprite" parent="."]
+position = Vector2( -164.115, -26.3511 )
+scale = Vector2( 2.75, 3 )
+texture = ExtResource( 8 )
+
+[node name="Char_Select" type="Node2D" parent="."]
+position = Vector2( 5, 0 )
+scale = Vector2( 2.5, 2.5 )
+script = ExtResource( 1 )
+
+[node name="Gecko" parent="Char_Select" instance=ExtResource( 3 )]
+material = SubResource( 2 )
+position = Vector2( 130, -90 )
+
+[node name="Crew" parent="Char_Select" instance=ExtResource( 3 )]
+material = SubResource( 3 )
+position = Vector2( 130, -63 )
+character = 1
+
+[node name="Kiara" parent="Char_Select" instance=ExtResource( 3 )]
+material = SubResource( 4 )
+position = Vector2( 130, -36 )
+character = 2
+
+[node name="Capt" parent="Char_Select" instance=ExtResource( 3 )]
+material = SubResource( 5 )
+position = Vector2( 130, -9 )
+character = 3
+
+[node name="Portrait" type="Sprite" parent="."]
+position = Vector2( 366.201, 137.092 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 6 )
+hframes = 4
+frame = 2
+
+[node name="Page 1" type="Node2D" parent="."]
+
+[node name="Input" parent="Page 1" instance=ExtResource( 4 )]
+position = Vector2( -300.389, -51.2785 )
+scale = Vector2( 2.5, 2.5 )
+
+[node name="Button" parent="Page 1" instance=ExtResource( 5 )]
+position = Vector2( 80, 145 )
+scale = Vector2( 3.5, 3.5 )
+frame = 0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Page 1"]
+modulate = Color( 0.85098, 0.945098, 0.988235, 1 )
+margin_left = -450.849
+margin_top = -224.377
+margin_right = -283.849
+margin_bottom = -165.377
+rect_scale = Vector2( 2, 2 )
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 6 )
+text = "PRESS \"WASD\" TO 
+MOVE AROUND"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Path2D" type="Path2D" parent="Page 1"]
+position = Vector2( -86.7592, -134.006 )
+rotation = 1.5708
+scale = Vector2( 0.7, 0.7 )
+curve = SubResource( 7 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Page 1/Path2D"]
+position = Vector2( 88.2823, -27.9555 )
+offset = 471.02
+rotate = false
+script = ExtResource( 12 )
+runSpeed = 189
+
+[node name="Player" parent="Page 1/Path2D/PathFollow2D" instance=ExtResource( 11 )]
+position = Vector2( 6.70788, -6.02766 )
+rotation = -1.5708
+scale = Vector2( 4, 4 )
+skin = 5
+
+[node name="Scroll" type="Node2D" parent="."]
+
+[node name="Scroll_1" type="Sprite" parent="Scroll"]
+position = Vector2( -230, 160.648 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 9 )
+hframes = 2
+
+[node name="Scroll_2" type="Sprite" parent="Scroll"]
+position = Vector2( -185, 160.648 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 9 )
+hframes = 2
+frame = 1
+
+[node name="Scroll_3" type="Sprite" parent="Scroll"]
+position = Vector2( -140, 161.355 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 9 )
+hframes = 2
+frame = 1
+
+[node name="Scroll_4" type="Sprite" parent="Scroll"]
+position = Vector2( -95, 161.355 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 9 )
+hframes = 2
+frame = 1

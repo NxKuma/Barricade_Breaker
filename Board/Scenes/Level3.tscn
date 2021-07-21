@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Misc/Scenes/Ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Board/Scenes/Board.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Misc/Scenes/Debug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/Scenes/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Misc/Graphic/Black.png" type="Texture" id=6]
+[ext_resource path="res://Misc/Scenes/Dialouge.tscn" type="PackedScene" id=7]
+
+
+
+
+
+[node name="Level_3" type="Node2D"]
+
+[node name="Board" parent="." instance=ExtResource( 2 )]
+
+[node name="Ball" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0.881653, -45.4084 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0.498, 45 )
+current = true
+zoom = Vector2( 0.4, 0.5 )
+smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 117.599, 0 )
+skin = 2
+
+[node name="Debug" parent="." instance=ExtResource( 4 )]
+
+[node name="StartingPoint_R" type="Node2D" parent="."]
+position = Vector2( 65, 0 )
+
+[node name="StartingPoint_L" type="Node2D" parent="."]
+position = Vector2( -65, 0 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
+
+[node name="Black" type="Sprite" parent="."]
+position = Vector2( 3.01345, 45.4543 )
+scale = Vector2( 27.3142, 20.6818 )
+z_index = -2
+texture = ExtResource( 6 )
+
+[node name="Captain" parent="." instance=ExtResource( 5 )]
+position = Vector2( -76.4537, 2.35968 )
+skin = 3
