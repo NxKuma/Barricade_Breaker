@@ -116,7 +116,7 @@ scale = Vector2( 2.5, 2.5 )
 [node name="Button" parent="Page 1" instance=ExtResource( 5 )]
 position = Vector2( 80, 145 )
 scale = Vector2( 3.5, 3.5 )
-frame = 0
+frame = 2
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Page 1"]
@@ -143,11 +143,11 @@ scale = Vector2( 0.7, 0.7 )
 curve = SubResource( 7 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Page 1/Path2D"]
-position = Vector2( 88.2823, -27.9555 )
+position = Vector2( 87.5771, -27.8429 )
 offset = 471.02
 rotate = false
 script = ExtResource( 12 )
-runSpeed = 189
+runSpeed = 188
 
 [node name="Player" parent="Page 1/Path2D/PathFollow2D" instance=ExtResource( 11 )]
 position = Vector2( 6.70788, -6.02766 )
