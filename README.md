@@ -21,10 +21,10 @@ Wiki: *[supported](https://github.com/fenix-hub/godot-engine.github-integration/
 ## What is this?
 *GitHub Integration* is a addon for Godot Engine that I've created mainly for a personal purpose.  
 Pushing and Pulling repositories while I'm working on Godot (especially if I'm under a GameJam) could take some time and force me to save the project, open the brwoser/git bash/git gui, and do all the stuff.  
-With this little addon which works directly in the editor, managing all your repositories will be very easy.  
+With this little addon which works directly in the editor,ing all your repositories will be very easy.  
 
 ## What can it do?
-*Github Integration* offers the main  provided by GitHub (and git itself), in a more accessible way.  
+*Github Integration* offers the mai by GitHub (and git itself), in a more accessible way.  
 Currenlty, you can:
 - Manage all of your public and private **repositories**, *including* the ones you share with organizations and the ones in which you are a collaborator (with proper permissions): create, delete, push and clone repositories within your Godot project
 - Manage all of your public and private **gists**: delete, edit and create gists with a functional text editor
