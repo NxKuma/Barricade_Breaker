@@ -24,7 +24,7 @@ Pushing and Pulling repositories while I'm working on Godot (especially if I'm u
 With this little addon which works directly in the editor, managing all your repositories will be very easy.  
 
 ## What can it do?
-*Github Integration* offers the main  provided by GitHub (and git itself), in a more accessible way.  
+*Github Integration* offers the mai by GitHub (and git itself), in a more accessible way.  
 Currenlty, you can:
 - Manage all of your public and private **repositories**, *including* the ones you share with organizations and the ones in which you are a collaborator (with proper permissions): create, delete, push and clone repositories within your Godot project
 - Manage all of your public and private **gists**: delete, edit and create gists with a functional text editor
